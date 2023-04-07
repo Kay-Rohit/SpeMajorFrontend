@@ -1,17 +1,56 @@
 import React, { useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './HomeScreen';
-import { View } from 'react-native';
-import { Text } from 'react-native-paper';
-
+import { ScrollView, View } from 'react-native';
+import { Text, SegmentedButtons } from 'react-native-paper';
 
 function MessPageScreen({route}){
-    const [messData, setMessData] = useState(route.params?.data)
+    const [messData, setMessData] = useState(route.params?.data);
+    const [screen, setScreen] = React.useState('about');
+
     // console.log(messData)
     return(
-        <View className="flex-1 items-center justify-center">
-            <Text>Hello this is mess page of {messData.messname}</Text>
-        </View>
-    )
+        <ScrollView>
+            <SegmentedButtons
+                value={screen}
+                onValueChange={setScreen}
+                buttons={[
+                {
+                    value: 'about',
+                    label: 'About',
+                },
+                {
+                    value: 'menu',
+                    label: 'Menu',
+                },
+                { value: 'review', label: 'Reviews' },
+                ]}
+            />
+            {
+                (screen=='about') &&
+                (
+                    <View className="h-screen items-center justify-center">
+                        <Text>Hello this is about page of {messData?.messname} </Text>
+                    </View>
+                )
+            }
+            {
+                (screen=='menu') &&
+                (
+                    <View className="h-screen items-center justify-center">
+                        <Text>Hello this is mess menu page of {messData?.menu} </Text>
+                    </View>
+                )
+            }
+            {
+                (screen=='review') &&
+                (
+                    <View className="h-screen items-center justify-center">
+                        <Text>Hello this is mess review page of {messData?.reviews} </Text>
+                    </View>
+                )
+            }
+                
+                
+        </ScrollView>
+    );
 }
 export default MessPageScreen

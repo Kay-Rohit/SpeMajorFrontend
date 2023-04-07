@@ -11,8 +11,8 @@ export default function HomeScreenStack() {
           <Stack.Navigator
             screenOptions={{headerShown:false}}
           >
-                <Stack.Screen name = "CustomerHomeScreen" component={HomeScreen} />
                 <Stack.Screen name = "MessPageScreen" component={MessDetailsScreen} />
+                <Stack.Screen name = "CustomerHomeScreen" component={HomeScreen} />
           </Stack.Navigator>
   );
 }
