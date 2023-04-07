@@ -42,7 +42,7 @@ export default function App() {
     <GlobalContext.Provider value={{ globalState, setGlobalState }}>
       <NavigationContainer>
           <Stack.Navigator
-            screenOptions={{headerTitleAlign:'center', headerTintColor:'red', headerTitle:'What a Mess'}}
+            screenOptions={{headerTitleAlign:'center', headerTintColor:'purple', headerTitle:'What a Mess'}}
             >
             {
               (loggedinUser===null) ? <Stack.Screen name='Setup' component={LoginRegistrationStackScreen}/> //return login screen if user is null {}

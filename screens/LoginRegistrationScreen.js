@@ -8,7 +8,7 @@ export default function LoginRegistrationStackScreen({navigation}){
     return(
         <>
             <RegistrationStack.Navigator
-                screenOptions={{headerTitleAlign:"center", headerTintColor:"blue"}}
+                screenOptions={{headerTitleAlign:"center", headerTintColor:"green"}}
                 >
                 <RegistrationStack.Screen name="Login" component={LoginScreen} />
                 <RegistrationStack.Screen name="Registration" component={RegistrationScreen} />
