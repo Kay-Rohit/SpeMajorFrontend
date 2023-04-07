@@ -19,7 +19,7 @@ function LoginScreen({navigation}) {
     const credentialInput = useRef();
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View className="flex-1 justify-center">
             <Form 
 
                 buttonText='Login'

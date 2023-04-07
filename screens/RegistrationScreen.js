@@ -45,8 +45,8 @@ function RegistrationScreen({navigation}) {
         address:addressResponse,
         latitude:"",
         longitude:"",
-        service:"",
-        type:"Dine-in",
+        service:"Both",
+        type:"pure-veg",
         trial:true,
         breakfast:true,
         pricing:""
@@ -285,8 +285,9 @@ function RegistrationScreen({navigation}) {
                                 />
                                 <Picker
                                     items={[
-                                    { label: 'Veg', value: "Veg" },
-                                    { label: 'Non-veg', value: "non-veg" }
+                                    { label: 'Pure-veg', value: "pure-veg" },
+                                    { label: 'Non-veg', value: "non-veg" },
+                                    { label: 'Jain', value: "jain" }
                                     ]}
                                     label="Food Type"
                                     selectedValue={messDetails.type}
