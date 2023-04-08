@@ -52,10 +52,10 @@ function LoginScreen({navigation}) {
                                 {text: 'Thanks', onPress: () => {
                                     if(res.data.role==="CUSTOMER")
                                         // nav.navigate('CustomerScreen');
-                                        setGlobalState({role:"CUSTOMER", isLoggedIn:true})
+                                        setGlobalState({...res.data, isLoggedIn:true})
                                     else
                                         // nav.navigate('MessOwnerScreen');
-                                        setGlobalState({role:"OWNER", isLoggedIn:true})
+                                        setGlobalState({...res.data, isLoggedIn:true})
                                 }},
                               ]
                             );

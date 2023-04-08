@@ -16,8 +16,10 @@ export default function App() {
 
   const [loggedinUser, setLoggedinUser] = useState(null);
   const [globalState, setGlobalState] = useState({
+    username:'',
     role: '',
-    isLoggedIn: false
+    token:'',
+    isLoggedIn: true
   }); //maining a global state as this is passed to child component
   //and when anything changes, useEffect is called as it is dependednt on globalState variable
 
@@ -28,6 +30,7 @@ export default function App() {
         try{
             const val = JSON.parse(await AsyncStorage.getItem('logged-in-user'));
             setLoggedinUser(val);
+            setGlobalState({...loggedinUser, isLoggedIn:true})
             // console.log(val);
         }
         catch(e){

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import {View, ScrollView, Linking} from 'react-native'
 
 import {Button, FAB, Searchbar, Text, Card, Chip} from 'react-native-paper'
@@ -12,10 +12,13 @@ import * as Location from 'expo-location';
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from '../../assets/URL'
+import {GlobalContext} from '../../context/userContext'
 
 function HomeScreen({navigation}) {
 
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const { globalState, setGlobalState } = useContext(GlobalContext);
+
+  const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
   const [user, setUser] = useState({});
@@ -28,16 +31,16 @@ function HomeScreen({navigation}) {
 
   useEffect(()=>{
 
-    (async() => {
+    // (async() => {
 
-      try{
-        const data = JSON.parse(await AsyncStorage.getItem('logged-in-user'));
-        setUser(data);
-        // console.log(user.token);
-      }
-      catch(err){console.log("Async storage error", err)}
+    //   try{
+    //     const data = JSON.parse(await AsyncStorage.getItem('logged-in-user'));
+    //     setUser(data);
+    //     // console.log(user.token);
+    //   }
+    //   catch(err){console.log("Async storage error", err)}
 
-    })();
+    // })();
 
 
     //ask for location permisiion if not given
@@ -62,10 +65,10 @@ function HomeScreen({navigation}) {
 
 //list of all mess
   const getMessList = async() => {
-    await axios.get(`${baseUrl}/customer/get-all-mess`, {
+    await axios.get(`${baseUrl}/customer/get-all-mess`,{
       //make sure that the token starts with Bearer
       headers:{
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${globalState?.token}`,
       }
     }).then((res) => {
       // console.log(res.data);

@@ -146,6 +146,7 @@ function MessPageScreen({route}){
                                     <Card.Content>
                                         <Text className='' variant='titleMedium'> <FAIcon name='star'/> {review?.rating} rating</Text>
                                         <Text variant="bodyMedium" className='capitalize mt-2'>{review?.comment}</Text>
+                                        <Text style={{ fontWeight: 'bold' }}> - {review?.reviewBy}</Text>
                                     </Card.Content>
                                 </Card>
                                 )
