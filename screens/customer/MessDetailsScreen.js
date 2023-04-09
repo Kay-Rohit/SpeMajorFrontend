@@ -92,6 +92,7 @@ function MessPageScreen({route}){
                             <View className="mt-5 pl-5">
                             <Text variant="bodyLarge" className='capitalize'><Icon name='fastfood'/> {messData?.type} food</Text>
                             <Text variant="bodyLarge" className='capitalize'><Icon name='free-breakfast'/> {(messData?.breakfast) ? "Breakfast Included" : "Breakfast Not included"}</Text>
+                            <Text variant="bodyLarge" className='capitalize'><Icon name='weekend'/> Sundays - {messData?.aboutSundays}</Text>
                             <Text variant="bodyLarge" className='capitalize'><FAIcon name={(messData?.trial)?`check-circle-o`:`times-circle-o`}/> {(messData?.trial) ? "Free trial available" : "Free trial not available"}</Text>
                             <Text variant="bodyLarge"><Icon name='play-arrow'/> {messData?.service} service</Text>
                             <Text variant="bodyLarge"><FAIcon name='rupee'/> {messData?.pricing}/month</Text>

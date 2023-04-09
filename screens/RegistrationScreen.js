@@ -49,6 +49,7 @@ function RegistrationScreen({navigation}) {
         type:"pure-veg",
         trial:true,
         breakfast:true,
+        aboutSundays:"closed",
         pricing:""
     });
     const messInput = useRef();
@@ -116,7 +117,7 @@ function RegistrationScreen({navigation}) {
 
 
   return (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center' }} className="p-5">
 
         {/* Form first page here */}
         {
@@ -209,7 +210,7 @@ function RegistrationScreen({navigation}) {
                     {/* 1 for customer registration
                         2 for the mess owner registration
                     */}
-                    <ScrollView contentContainerStyle ={{}}>
+                    <ScrollView contentContainerStyle ={{padding:5}}>
                         <Picker
                             items={[
                             { label: 'I want to find mess', value: 1 },
@@ -303,6 +304,19 @@ function RegistrationScreen({navigation}) {
                                     label="Breakfast included?"
                                     selectedValue={messDetails.breakfast}
                                     onSelection={(item) => setMessDetails({...messDetails,breakfast:item.value})}
+                                    isRequired
+                                    asterik
+                                />
+                                <Picker
+                                    items={[
+                                    { label: 'Sundays closed', value: 'closed' },
+                                    { label: 'Sundays open', value: 'open' },
+                                    { label: 'Only first half', value: 'first-half' }
+
+                                    ]}
+                                    label="What about sundays?"
+                                    selectedValue={messDetails.aboutSundays}
+                                    onSelection={(item) => setMessDetails({...messDetails, aboutSundays:item.value})}
                                     isRequired
                                     asterik
                                 />

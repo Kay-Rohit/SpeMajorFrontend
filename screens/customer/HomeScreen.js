@@ -5,7 +5,7 @@ import {Button, FAB, Searchbar, Text, Card, Chip} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 //for distance calculation
-import { getPreciseDistance } from 'geolib';
+import { getPreciseDistance, getDistance } from 'geolib';
 import * as Location from 'expo-location';
 
 
@@ -80,10 +80,10 @@ function HomeScreen({navigation}) {
   //this new messList object stores distances as well as mess details
   const newMessList = messList?.map((mess) => (
     //this is appending  new variable to the messList object, i.e. distance
-      {...mess, distance: getPreciseDistance(
+      {...mess, distance: getDistance(
         {latitude: currLoc?.coords.latitude, longitude: currLoc?.coords.longitude},
         {latitude: mess?.latitude, longitude: mess?.longitude}
-      )}
+      )*0.0001}
   ));
 
 
@@ -136,7 +136,11 @@ function HomeScreen({navigation}) {
                   <Card.Actions className="mt-2">
                     <Chip icon="map-marker"
                       onPress={() => openMaps(mapsUrl)}
-                    >{messDetails.distance} km away</Chip>
+                    >
+                      {
+                        (messDetails.distance < 1) ? `less than a km away` : `${messDetails.distance} km away` 
+                      }
+                    </Chip>
                   </Card.Actions>
                   <Button
                     onPress={ () => {navigation.navigate('MessPageScreen', {data: messDetails});} }
