@@ -1,1 +1,4 @@
-export const baseUrl = "https://631f-2401-4900-4bb1-d838-ae20-56ea-9dad-4e8d.ngrok-free.app";
+//process.env is used to fetch the environment variable of the system and thus fetch the ip
+
+const url = process.env.HOST_IP;
+export const baseUrl = `http://${url}:5000`;
