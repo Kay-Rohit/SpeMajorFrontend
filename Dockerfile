@@ -21,13 +21,13 @@ RUN npm i --unsafe-perm --allow-root -g npm@latest expo-cli@latest
 RUN mkdir /WhatAMess
 WORKDIR /WhatAMess
 ENV PATH /WhatAMess/.bin:$PATH
-COPY ./WhatAMess/package.json ./WhatAMess/package-lock.json ./
+COPY ./package.json ./package-lock.json ./
 RUN npm install
 
 # copy in our source code last, as it changes the most
 WORKDIR /WhatAMess/app
 # for development, we bind mount volumes; comment out for production
-COPY ./WhatAMess .
+COPY . .
 
 CMD [ "npx", "expo", "start" ]
 EXPOSE 19000
