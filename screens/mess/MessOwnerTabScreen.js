@@ -17,16 +17,19 @@ import {
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Home } from "@mui/icons-material";
+
 const Drawer = createDrawerNavigator();
 
 import UpdateMenu from "./UpdateMenu";
 import MessDetails from "./MessDetails";
 import CustomerList from "./CustomerList";
+import CustomerRequest from "./CustomerRequest";
 
 const Tab = createMaterialBottomTabNavigator();
 
 
 function MessOwnerTabScreen(){
+  
     return(
       <Drawer.Navigator>
       <Drawer.Screen name="Home" component={HomeScreen} 
@@ -52,6 +55,7 @@ function MessOwnerTabScreen(){
       />
       <Drawer.Screen name="Mess Details" component={MessDetails}/>
       <Drawer.Screen name="Customers" component={CustomerList} />
+      <Drawer.Screen name="Requests" component={CustomerRequest}/>
 
     </Drawer.Navigator>
     );

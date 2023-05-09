@@ -128,7 +128,7 @@ function ProfileScreen() {
               onPress={async () => {
                 try {
                   await AsyncStorage.removeItem("logged-in-user");
-                  setGlobalState({ ...globalState, isLoggedIn: false });
+                  setGlobalState({...globalState, isLoggedIn:false, username:"", role:"", token:""});
                 } catch (err) {
                   console.log(err);
                 }
