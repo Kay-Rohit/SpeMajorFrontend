@@ -9,7 +9,17 @@ import { baseUrl } from '../../assets/URL';
 function UpdateMenu() {
   const [data, setData] = useState([{ day: '', breakfast: '', lunch: '', dinner: '' }]);
   const { globalState, setGlobalState } = useContext(GlobalContext);
-
+  const [visible, setVisible] = useState(false);
+  
+  const renderDropdown = () => {
+    if (visible) {
+      return (
+          <Text style={styles.dropdown}>
+            This is where the dropdown will be rendered.
+          </Text>
+      );
+    }
+  };
   const changeDay = (ind, txt) => {
     let temp = data;
     temp.map((item, index) => {
